@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Selecteurs Jquery</title>
+    <style>
+        .maclasse {
+            color: blue;
+            text-decoration: underline;
+            background: skyblue;
+        }
+    </style>
 </head>
 <body>
     <!-- le cours est basé sur les élémentes qui changent en javaScript -->
@@ -17,6 +24,16 @@
     <div>Div1</div>
     <div class="select">Div2</div>
     <nav class="select">Nav1</nav>
+
+
+    <span>Span1</span>
+    <span>Span2</span>
+    <span class="fakeClass">Span3</span>
+
+    <figure>
+        <img src="picmontange.jpg" alt="Coline" style="width: 350px">
+        <figcaption></figcaption>
+    </figure>
    
     <script src="../sources/jquery-3.4.1.js"></script>
    
@@ -41,8 +58,8 @@
         console.log($('h1').eq(0).text('Mon titre via Jquery'));
 
         console.log($('p').eq(2).text());
-        var maVariable = $('p').eq(0).html();
         console.log(maVariable)
+        var maVariable = $('p').eq(0).html();
 
         // plutot de remplacer le texte d'une liste on peut y ajouter du texte. Aussi       nous allons devoir choisir de le rejouter avant , ou après
 
@@ -82,6 +99,81 @@
 
         // selectionner les 3 elements pour les faire précéder leur conteus d'un tiret '- '
         $('.select , div').prepend('- '); //ici on met un crochet pour ts les éléments
+
+
+
+        // MANIPULATIONS DE CLASSES: (addClass(), removeClass(), toggeleClass() et hasClass())
+
+        // addclass() permet d'ajouter une calsse à la selection
+
+        console.log($('span').eq(1).text());
+        $('span').eq(1).addClass('maclasse');
+
+        // removeClass( retire une classs existante à un élément)
+
+        $('span').eq(2).removeClass('fakeClass');
+
+        // retirer la class maclass au span 2
+        $('span').eq(1).removeClass('maclasse');
+
+        //  MANIPULATION D'ATTRIBUTS (attr(), removeAttr())
+
+        // attr()(infobulle) qui établit un nouvel attribut
+        $('div').eq(1).attr("title", "Hello")
+
+        // removeAttr()(infobulle) qui établit un nouvel attribut
+        $('div').eq(1).removeAttr("title", "Hello")
+
+        // retirez svp le class="" maintenant vide de votre span2
+        $('span').eq(1).removeAttr("class")
+
+        // dexième écriture
+        $('span:eq(1) , span:eq(2)').removeAttr("class")
+
+
+        // Notion de parents enfants
+
+        // en selectionnant le parent (figure) je lui demande de chercher un enfant (img) pour lui attribuer un attribut
+        $('figure').find('img').attr("title", "Montagne");
+
+        // en selectionnant un enfant je cherche à toucher le parent 
+        // .parent() va chercher le parent naturel
+        $('img').parent().css("border", "2px solid green");
+
+        // paren().parent() il va chercher le parent du parent
+        $('img').parent().parent().css("border", "2px solid green");
+
+        // exercice:
+        // le but sera de récuperer l'attribut "Alt" dans une variable et le mettre ds figcaption
+
+
+        // console.log() present pour verifier tout de suite si je parviens à recuperer le contenu de alt
+
+        console.log($('img').attr('alt'));
+        
+        // une fois certain que je recupere le contenu souhaité, j'affiche ce contenu dans une variable
+        var monAlt = $('img').attr('alt');
+
+        // je verifie que ma variable contient bien le alt
+        console.log(monAlt);
+
+        // je selectionne ma légende (figcaption) pour remplir la balise avec ma variable(Le contenu du alt)
+        $('figcaption').html(monAlt);
+
+        // le tout  peut aussi se résoudre en une seule ligne: 
+        // $('figcaption').html($('img').attr('alt'))
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 
