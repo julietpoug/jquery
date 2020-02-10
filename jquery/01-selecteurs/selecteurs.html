@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selecteurs Jquery</title>
+</head>
+<body>
+    <!-- le cours est basé sur les élémentes qui changent en javaScript -->
+    <h1>Titre H1</h1>
+    <p>paragraphe1</p>
+    <p>paragraphe2</p>
+    <p>paragraphe3</p>
+    <p>paragraphe4</p>
+
+    <div>Div1</div>
+    <div class="select">Div2</div>
+    <nav class="select">Nav1</nav>
+   
+    <script src="../sources/jquery-3.4.1.js"></script>
+   
+    <script>
+        // console.log(document.getElementsByTagName('h1'));
+        // console.log(document.querySelector('h1').innerHTML);
+
+        // la fonction query $ est l'équivalent d'un document.querySelectorAll()
+        // la méthode html() permet de recuperer le contenu d'une balise au mm titre que innerHTML
+
+        // la méthode eq() permet de selectionner en jquery un indice d'une collection d'objets
+        console.log($('h1').eq(0).html())
+
+        // pour le redefinir:
+        $('h1').eq(0).html('Mon titre via Jquery');
+
+        // on peut mettre un lien ds la méthode html
+        $('h1').eq(0).html('<a href="#">Mon titre via Jquery</a>');
+
+        // pour redefinir le contenu texte
+        // $('h1').eq(0).text('<a href="#">Mon titre via Jquery</a>');
+        console.log($('h1').eq(0).text('Mon titre via Jquery'));
+
+        console.log($('p').eq(2).text());
+        var maVariable = $('p').eq(0).html();
+        console.log(maVariable)
+
+        // plutot de remplacer le texte d'une liste on peut y ajouter du texte. Aussi       nous allons devoir choisir de le rejouter avant , ou après
+
+        $('p').eq(1).append(' Après');
+
+        $('p').eq(1).append(' <span style="color: purple;">Après</span>');
+
+        $('p').eq(2).prepend(' Avant');
+
+       
+        // methode css() applique des changements css en remplacement de .style
+        $('p').html('Hello');
+        // pour viser un élément precis on ajoute .eq(numéro)
+        $('p').eq(0).html('Hello');
+
+        // appliquer un seul changement
+
+        $('p').css("color", "red");
+
+        // appliquer plusieurs changements
+        $('p').css({
+            'color':'red', 
+            'font-weight': 'bold', 
+            'margin': '10px'
+            });
+        
+
+        // selectionner les duex div, leur donner un contour rouge
+        $('div').css( "border", "red solid 1px");
+
+        // selectionner les elements qui ont la class select pour leur appliquer une couleur de font bleu et un texte white
+
+        $('.select').css({
+            'color':'white', 
+            'background': 'blue', 
+        });
+
+        // selectionner les 3 elements pour les faire précéder leur conteus d'un tiret '- '
+        $('.select , div').prepend('- '); //ici on met un crochet pour ts les éléments
+
+
+
+
+
+    </script>
+</body>
+</html>

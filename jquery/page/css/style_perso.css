@@ -1,0 +1,16 @@
+/* Feuille de style perso css pour bootstrap  */
+.contour {
+    border: 2px solid red;
+}
+.bleu {
+    background: blue;
+}
+.vert {
+    background: green;
+}
+.jaune {
+    background: gold;
+}
+.violet {
+    background: purple;
+}
