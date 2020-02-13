@@ -54,7 +54,10 @@
     <h2 id="titre3">Titre3</h2>
     <div id="contenu3" >Contenu3</div>
     <hr>
+    <h3>Animation</h3>
     <div id="cube"></div>
+    <h3 style="position: relative;">Animation par étape</h3>
+    <div id="cube2"></div>
 
 
     
@@ -129,6 +132,15 @@
                     'left': '100px'
                 });
             })
+            //animation par étape
+            function etapes(){
+                    $(this).animate({'opacity' : '1'}, 800);
+                    $(this).animate({'left': '200px' }, 2000);
+                    $(this).animate({'opacity' : '0.5'}, 800);
+                    $(this).animate({'left': '-200px' }, 1000);
+                    };
+                    $('#cube2').mouseenter(etapes);
+                    $('#cube+h3').click(etapes);
 
            
 

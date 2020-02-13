@@ -1,0 +1,75 @@
+<!DOCTYPE htmL>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculatrice</title>
+        <style>
+          body {
+              text-align: center;
+          }
+        </style>
+    </head>
+    <body>
+        <a href="#" id="afficher">Faire disparaître la calculatrice</a> <span>/</span> <a href="#" id="cacher">Faire apparaître la calculatrice</a> <span>/</span> <a href="#" id="toggle">Je toggle</a>
+       <div id="conteneur" style="background-color: gray; height: 200px; width: 80%; margin: 20px auto; text-align: center; padding: 50px;">
+            
+            <form action="#" method="get">
+                <input type="number" name="saisie1" id="saisie1">
+                <select name="operateur" id="operateur">
+                    <option>+</option>
+                    <option>-</option>
+                    <option>*</option>
+                    <option>/</option>
+                </select>
+                <input type="number" name="saisie2" id="saisie2">
+                <input type="submit" name="bouton" id="bouton" value="Calculez">
+    
+            </form>
+       </div>
+        
+        <script src="../sources/jquery-3.4.1.js"></script>
+        <script>
+            
+            $(function(){
+                function calcul(event){
+                    event.preventDefault();
+                    // console.log('ça marche');
+                    var monSaisie1 = $('#saisie1').val();
+                    // console.log(monSaisie1);
+                    var monSaisie2 = $('#saisie2').val();
+                    // console.log(monSaisie2);
+                    var monOperateur = $('#operateur').val();
+                    // console.log(monOperateur);
+                    if( monOperateur ==  '+'){
+                        resultat = parseInt(monSaisie1) + parseInt(monSaisie2);
+                        console.log(resultat);
+                    }
+                    if( monOperateur == '-'){
+                        resultat = (monSaisie1 - monSaisie2);
+                        console.log(resultat);
+                    }
+                    if( monOperateur == '*'){
+                        resultat = (monSaisie1 * monSaisie2);
+                        console.log(resultat);
+                    }
+                    if( monOperateur == '/'){
+                        resultat = (monSaisie1 / monSaisie2);
+                        console.log(resultat);
+                    }
+                    alert( monSaisie1  + monOperateur + monSaisie2 + '=' + resultat );
+                };
+                $('#bouton').click(calcul);
+                $('#afficher').click(function(){
+                    $('#conteneur').slideDown();
+                });
+                $('#cacher').click(function(){
+                    $('#conteneur').slideUp();
+                });
+                $('#toggle').click(function(){
+                    $('#conteneur').slideToggle();
+                });
+            });
+                
+        </script>
+    </body>
+</html>
