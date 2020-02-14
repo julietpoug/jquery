@@ -1,0 +1,121 @@
+<!DOCTYPE htmL>
+<html lang="fr">
+    <head>
+        <!-- meta tags indispensables -->
+        <meta charset="UTF-8">
+
+        <!-- shrink-to-fit=no pour bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Calculatrice - Numa - Bootstrap</title>
+        <!-- bootstrap css cdn  -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+          body {
+              background: url(../img/volkan-olmez-aG-pvyMsbis-unsplash.jpg);
+          }
+
+        </style>
+    </head>
+    <body>
+
+      <div class="container bg-white p-4 mt-4">
+            <div class="jumbotron">
+                <h1 class="display-4">Calculatrice & bootstrap 4</h1>
+                <p class="lead">Une calculatrice en Jquery - <span class="badge badge-dark">Numa KROUCHI</span></p>
+                <hr class="my-4">
+            </div> 
+            
+            <div class="p-4">
+                <button type="button" class="btn btn-success" id="afficher">Afficher</button>
+                <button type="button" class="btn btn-danger" id="cacher">Cacher</button>
+                <button type="button" class="btn btn-info" id="toggle">Toggle</button>
+            </div>
+
+            <!-- <a href="#" id="afficher">afficher</a> <span>/</span> <a href="#" id="cacher">cacher</a> <span>/</span> <a href="#" id="toggle">Je toggle</a>
+           <div id="conteneur">
+                 -->
+        
+            <div id="conteneur" class="bg-secondary rounded p-4">
+                <form action="#" method="GET">
+                    <div class="row">
+    
+                         <div class="col">
+                                <input type="number" class="form-control" name="saisie1" id="saisie1">
+                        </div>
+    
+    
+                        <div class="col">
+                            <select class="form-control" name="operateur" id="operateur">
+                                <option>+</option>
+                                <option>-</option>
+                                <option>*</option>
+                                <option>/</option>
+                            </select>
+                        </div>
+    
+    
+                        <div class="col">
+                            <input type="number" class="form-control" name="saisie2" id="saisie2">
+                        </div>
+                        
+                        <div class="col">
+                            <button type="submit" class="form-control btn btn-primary" name="bouton" id="bouton" value="Calculez">Calculez</button>
+                        </div>
+                
+                    </div>
+                </form>
+                    <!-- fin conteneur -->
+            </div id="conteneur">
+      </div>
+       <!-- jquery vient avant, en suite popper.js et javaScript à la fin -->
+
+       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"       crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"      crossorigin="anonymous"></script>     
+       <!-- Bibliothèque jquery --> 
+        <script src="../sources/jquery-3.4.1.js"></script>
+        <script>
+            
+            $(function(){
+                function calcul(event){
+                    event.preventDefault();
+                    // console.log('ça marche');
+                    var saisie1 = $('#saisie1').val();
+                    // console.log(saisie1);
+                    var saisie2 = $('#saisie2').val();
+                    // console.log(saisie2);
+                    var operateur= $('#operateur').val();
+                    // console.log(operateur);
+                    if( operateur==  '+'){
+                        resultat = parseInt(saisie1) + parseInt(saisie2);
+                        console.log(resultat);
+                    }
+                    if( operateur== '-'){
+                        resultat = (saisie1 - saisie2);
+                        console.log(resultat);
+                    }
+                    if( operateur== '*'){
+                        resultat = (saisie1 * saisie2);
+                        console.log(resultat);
+                    }
+                    if( operateur== '/'){
+                        resultat = (saisie1 / saisie2);
+                        console.log(resultat);
+                    }
+                    alert( saisie1  + " " +  operateur + " " + saisie2 + " = " + resultat );
+                };
+                $('#bouton').click(calcul);
+                $('#afficher').click(function(){
+                    $('#conteneur').slideDown();
+                });
+                $('#cacher').click(function(){
+                    $('#conteneur').slideUp();
+                });
+                $('#toggle').click(function(){
+                    $('#conteneur').slideToggle();
+                });
+            });
+                
+        </script>
+    </body>
+</html>
